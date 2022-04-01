@@ -2,7 +2,6 @@ Pandas
 NumPy
 scikit-learn
 matplotlib
-json
 nltk
 flask
 gunicorn
