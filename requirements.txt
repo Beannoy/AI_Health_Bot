@@ -1,4 +1,3 @@
-git push heroku app.py
 Pandas
 NumPy
 scikit-learn
