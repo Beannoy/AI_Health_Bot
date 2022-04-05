@@ -2,4 +2,3 @@ Pandas
 NumPy
 flask
 gunicorn
-torch
