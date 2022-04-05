@@ -4,3 +4,4 @@ Pandas
 NumPy
 flask
 gunicorn
+nltk
