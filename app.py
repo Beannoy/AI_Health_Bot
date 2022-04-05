@@ -28,14 +28,14 @@ nlp_model = NeuralNet(input_size, hidden_size, output_size).to(device)
 nlp_model.load_state_dict(model_state)
 nlp_model.eval()
 
-diseases_description = pd.read_csv("data/symptom_Description.csv")
-diseases_description['Disease'] = diseases_description['Disease'].apply(lambda x: x.lower().strip(" "))
+description_dis = pd.read_csv("data/symptom_Description.csv")
+description_dis['Disease'] = description_dis['Disease'].apply(lambda x: x.lower().strip(" "))
 
-disease_precaution = pd.read_csv("data/symptom_precaution.csv")
-disease_precaution['Disease'] = disease_precaution['Disease'].apply(lambda x: x.lower().strip(" "))
+precaution = pd.read_csv("data/symptom_precaution.csv")
+precaution['Disease'] = precaution['Disease'].apply(lambda x: x.lower().strip(" "))
 
-symptom_severity = pd.read_csv("data/Symptom-severity.csv")
-symptom_severity = symptom_severity.applymap(lambda s: s.lower().strip(" ").replace(" ", "") if type(s) == str else s)
+symp_severity = pd.read_csv("data/Symptom-severity.csv")
+symp_severity = symp_severity.applymap(lambda s: s.lower().strip(" ").replace(" ", "") if type(s) == str else s)
 
 with open('data/list_of_symptoms.pickle', 'rb') as data_file:
     symptoms_list = pickle.load(data_file)
@@ -99,15 +99,15 @@ def predict_symptom():
             disease = prediction_model.predict(x_test.reshape(1,-1))[0]
             print(disease)
 
-            description = diseases_description.loc[diseases_description['Disease'] == disease.strip(" ").lower(), 'Description'].iloc[0]
-            precaution = disease_precaution[disease_precaution['Disease'] == disease.strip(" ").lower()]
+            description = description_dis.loc[description_dis['Disease'] == disease.strip(" ").lower(), 'Description'].iloc[0]
+            precaution = precaution[precaution['Disease'] == disease.strip(" ").lower()]
             precautions = 'Precautions: ' + precaution.Precaution_1.iloc[0] + ", " + precaution.Precaution_2.iloc[0] + ", " + precaution.Precaution_3.iloc[0] + ", " + precaution.Precaution_4.iloc[0]
             response_sentence = "It looks to me like you have " + disease + ". <br><br> <i>Description: " + description + "</i>" + "<br><br><b>"+ precautions + "</b>"
             
             severity = []
 
             for each in user_symptoms: 
-                severity.append(symptom_severity.loc[symptom_severity['Symptom'] == each.lower().strip(" ").replace(" ", ""), 'weight'].iloc[0])
+                severity.append(symp_severity.loc[symp_severity['Symptom'] == each.lower().strip(" ").replace(" ", ""), 'weight'].iloc[0])
                 
             if np.mean(severity) > 4 or np.max(severity) > 5:
                 response_sentence = response_sentence + "<br><br>Considering your symptoms are severe, and MedAI isn't a real doctor, you should consider talking to one. :)"
