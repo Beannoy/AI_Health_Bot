@@ -5,3 +5,4 @@ NumPy
 flask
 gunicorn
 nltk
+sklearn
