@@ -14,7 +14,7 @@ from flask import Flask, render_template, url_for, request, jsonify
 random.seed(datetime.now())
 
 device = torch.device('cpu')
-FILE = "https://drive.google.com/file/d/15eVb2xjkDXqBAY5j_NPw5i25s1Vt6AjA/view?usp=sharing"
+FILE = "models/data.pth"
 model_data = torch.load(FILE)
 
 input_size = model_data['input_size']
@@ -40,7 +40,7 @@ symp_severity = symp_severity.applymap(lambda s: s.lower().strip(" ").replace(" 
 with open('data/list_of_symptoms.pickle', 'rb') as data_file:
     symptoms_list = pickle.load(data_file)
 
-with open('https://drive.google.com/file/d/14Ydu9adFfhJxPc3BoN-pM8dexHF4Dnm_/view?usp=sharing', 'rb') as modelFile:
+with open('models/fitted_model.pickle', 'rb') as modelFile:
     prediction_model = pickle.load(modelFile)
 
 user_symptoms = set()
