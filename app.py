@@ -86,7 +86,7 @@ def predict_symptom():
         if not user_symptoms:
             response_sentence = random.choice(
                 ["I can't know what disease you may have if you don't enter any symptoms :)",
-                "Meddy can't know the disease if there are no symptoms...",
+                "MedAI can't know the disease if there are no symptoms...",
                 "You first have to enter some symptoms!"])
         else:
             x_test = []
@@ -112,7 +112,7 @@ def predict_symptom():
                 severity.append(symptom_severity.loc[symptom_severity['Symptom'] == each.lower().strip(" ").replace(" ", ""), 'weight'].iloc[0])
                 
             if np.mean(severity) > 4 or np.max(severity) > 5:
-                response_sentence = response_sentence + "<br><br>Considering your symptoms are severe, and Meddy isn't a real doctor, you should consider talking to one. :)"
+                response_sentence = response_sentence + "<br><br>Considering your symptoms are severe, and MedAI isn't a real doctor, you should consider talking to one. :)"
 
             user_symptoms.clear()
             severity.clear()
