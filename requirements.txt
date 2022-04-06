@@ -5,4 +5,4 @@ NumPy
 flask
 gunicorn
 nltk
-sklearn==0.23.1
+sklearn
