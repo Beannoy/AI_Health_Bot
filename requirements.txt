@@ -7,4 +7,4 @@ NLTK
 NumPy
 Pandas
 matplotlib
-PyTorch
+Torch
