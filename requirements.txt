@@ -4,11 +4,5 @@ gunicorn
 scikit-learn
 Flask
 NumPy
-<<<<<<< HEAD
-Pandas
-=======
 Pandas
 nltk
-pickle
-nnet
->>>>>>> becba87d73b4fb3905697c9b00ec4c2f29164bdb
