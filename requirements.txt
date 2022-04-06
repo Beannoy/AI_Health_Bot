@@ -1,10 +1,8 @@
--f https://download.pytorch.org/wh1/torch_stable.html
-torch==1.11.0
-flask
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.11.0+cpu
 gunicorn
 scikit-learn
 Flask
 NLTK
 NumPy
 Pandas
-matplotlib
