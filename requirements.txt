@@ -1,4 +1,3 @@
-torch
 flask
 gunicorn
 scikit-learn
