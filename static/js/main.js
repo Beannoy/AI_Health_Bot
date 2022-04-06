@@ -96,7 +96,7 @@ $(document).ready(function () {
     if (again) text = "done";
 
     $.ajax({
-      url: "https://bot-medic.herokuapp.com/symptom",
+      url: "https://botmedical.herokuapp.com/symptom",
       data: JSON.stringify({ sentence: text }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
