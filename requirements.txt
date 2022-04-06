@@ -6,3 +6,5 @@ Flask
 NumPy
 Pandas
 nltk
+pickle
+nnet
