@@ -6,4 +6,3 @@ Flask
 NumPy
 Pandas
 nltk
-nltk_utils
