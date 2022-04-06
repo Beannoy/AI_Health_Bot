@@ -2,7 +2,6 @@ flask
 gunicorn
 scikit-learn
 Flask
-PyTorch
 NLTK
 NumPy
 Pandas
