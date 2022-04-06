@@ -40,7 +40,7 @@ symp_severity = symp_severity.applymap(lambda s: s.lower().strip(" ").replace(" 
 with open('data/list_of_symptoms.pickle', 'rb') as data_file:
     symptoms_list = pickle.load(data_file)
 
-with open('models/model.pkl', 'rb') as modelFile:
+with open('models/fitted_model.pickle', 'rb') as modelFile:
     prediction_model = pickle.load(modelFile)
 
 user_symptoms = set()
@@ -94,8 +94,8 @@ def predict_symptom():
                     x_test.append(1)
                 else: 
                     x_test.append(0)
-
             x_test = np.asarray(x_test)            
+
             disease = prediction_model.predict(x_test.reshape(1,-1))[0]
             print(disease)
 
